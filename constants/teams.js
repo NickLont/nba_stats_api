@@ -1,4 +1,4 @@
-export const teams = [
+const teams = [
   {name: 'Atlanta Hawks', abr: 'atl', id: '1610612737'},
   {name: 'Boston Celtics', abr: 'bos', id: '1610612738'},
   {name: 'Brooklyn Nets', abr: 'bkn', id: '1610612751'},
@@ -30,3 +30,4 @@ export const teams = [
   {name: 'Utah Jazz', abr: 'uta', id: '1610612762'},
   {name: 'Washington Wizards', abr: 'was', id: '1610612764'}
 ]
+module.exports = teams
