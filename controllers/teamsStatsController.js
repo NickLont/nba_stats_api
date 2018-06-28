@@ -24,7 +24,7 @@ exports.teamAllTimeLeaders = async (req, res) => {
   res.json(response.data)
 }
 exports.teamLogos = async (req, res) => {
-  const teamABR = req.query.teamABR ? req.query.teamABR : res.json('team name abbreviation is required')
+  const teamABR = req.query.teamABR ? req.query.teamABR : res.json('team name abbreviation (teamABR) is required')
   // If teamABR parameter exists in our teams array continue, otherwise give error message
   if (teams.find(team => team.abr === teamABR)) {
     const url = `http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/${teamABR}.png`
