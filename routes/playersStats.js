@@ -12,5 +12,6 @@ router.get('/playerPersonalInfo', verifyToken, catchErrors(playersStatsControlle
 router.get('/playerCareerInfo', verifyToken, catchErrors(playersStatsController.playerCareerInfo))
 router.get('/playerLeagueLeaders', verifyToken, catchErrors(playersStatsController.playersLeagueLeaders))
 router.get('/playerYearOverYear', catchErrors(playersStatsController.playerYearOverYear))
+router.get('/playerShotChart', catchErrors(playersStatsController.playerShotChart))
 
 module.exports = router
