@@ -1,11 +1,31 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const Joi = require('joi')
 
+// user schema to apply limitations to User attributes
+const userSchema = Joi.object().keys({
+  username: Joi.string().alphanum().min(3).max(30).required(),
+  password: Joi.string().min(3).max(30).required(),
+  email: Joi.string().email().required()
+})
 exports.homePage = (req, res) => {
   res.send('Home page')
 }
 exports.signup = async (req, res) => {
+  // validate username,password and email against schema and return 401 if error
+  Joi.validate(
+    {username: req.body.username, password: req.body.password, email: req.body.email},
+    userSchema,
+    (error) => {
+      if (error) {
+        res.status(400).json({
+          failed: error.details[0].message.replace(/"/g, '')
+        })
+        throw new Error(error)
+      }
+    }
+  )
   const userName = await User.findOne({username: req.body.username})
   const userEmail = await User.findOne({email: req.body.email})
   if (userName) {
