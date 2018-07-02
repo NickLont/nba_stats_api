@@ -1,6 +1,6 @@
 const axios = require('axios')
 const teams = require('../constants/teams')
-const {validators} = require('../helpers/index')
+const {validators} = require('../helpers/validators')
 
 exports.allTeams = (req, res) => {
   return res.json(teams)
@@ -40,6 +40,6 @@ exports.teamLogos = async (req, res) => {
     res.set('Content-Type', 'image/png')
     return res.send(response.data)
   } else {
-    return res.json('Wrong team abbreviation')
+    return res.status(400).json('Wrong team abbreviation')
   }
 }

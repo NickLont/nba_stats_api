@@ -1,11 +1,12 @@
 const axios = require('axios')
-const {validators} = require('../helpers/index')
+const {validators} = require('../helpers/validators')
 
 exports.allPlayers = async (req, res) => {
   const currentSeasonOnly = req.query.currentSeasonOnly ? req.query.currentSeasonOnly : '1'
   const season = req.query.season ? validators.season(req, res) : '2017-18'
-  const leagueID = req.query.leagueID ? req.query.leagueID : '00'
+  const leagueID = req.query.leagueID ? validators.leagueID(req, res) : '00'
   const url = `http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=${currentSeasonOnly}&Season=${season}&LeagueID=${leagueID}`
+  console.log('url', url)
   const response = await axios.get(url)
 
   return res.json(response.data)
@@ -30,7 +31,7 @@ exports.playerPersonalInfo = async (req, res) => {
 }
 exports.playerCareerInfo = async (req, res) => {
   const playerID = validators.playerID(req, res)
-  const perMode = req.query.perMode ? req.query.perMode : 'Totals'
+  const perMode = req.query.perMode ? validators.perMode(req, res) : 'PerGame'
   const url = `http://stats.nba.com/stats/playercareerstats?PlayerID=${playerID}&PerMode=${perMode}`
   const response = await axios.get(url)
   return res.json(response.data)
@@ -45,21 +46,19 @@ exports.playerYearOverYear = async (req, res) => {
   const playerID = validators.playerID(req, res)
   const season = req.query.season ? validators.season(req, res) : '2017-18'
   const measureType = req.query.measureType ? req.query.measureType : 'Base'
-  const leagueID = req.query.leagueID ? req.query.leagueID : '00'
-  const paceAdjust = req.query.paceAdjust ? req.query.paceAdjust : 'N'
-  const opponentTeamID = req.query.opponentTeamID ? req.query.opponentTeamID : '0'
-  const plusMinus = req.query.plusMinus ? req.query.plusMinus : 'N'
-  const rank = req.query.rank ? req.query.rank : 'N'
-  const perMode = req.query.perMode ? req.query.perMode : 'PerGame'
-  const period = req.query.period ? req.query.period : '0'
-  const seasonType = req.query.seasonType ? req.query.seasonType : 'Regular Season'
+  const leagueID = req.query.leagueID ? validators.leagueID(req, res) : '00'
+  const paceAdjust = req.query.paceAdjust ? validators.booleanLiteral(req, res, 'paceAdjust') : 'N'
+  const plusMinus = req.query.plusMinus ? validators.booleanLiteral(req, res, 'plusMinus') : 'N'
+  const rank = req.query.rank ? validators.booleanLiteral(req, res, 'rank') : 'N'
+  const perMode = req.query.perMode ? validators.perMode(req, res) : 'PerGame'
+  const seasonType = req.query.seasonType ? validators.seasonType(req, res) : 'Regular Season'
   const vsConference = req.query.vsConference ? req.query.vsConferance : ''
   const vsDivision = req.query.vsDivision ? req.query.vsDivision : ''
+  const opponentTeamID = req.query.opponentTeamID ? req.query.opponentTeamID : '0'
+  const period = req.query.period ? req.query.period : '0'
 
-  const url =
-    `
-      https://stats.nba.com/stats/playerdashboardbyyearoveryear?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=${leagueID}&Location=&MeasureType=${measureType}&Month=0&OpponentTeamID=${opponentTeamID}&Outcome=&PORound=0&PaceAdjust=${paceAdjust}&PerMode=${perMode}&Period=${period}&PlayerID=${playerID}&PlusMinus=${plusMinus}&Rank=${rank}&Season=${season}&SeasonSegment=&SeasonType=${seasonType}&ShotClockRange=&Split=yoy&VsConference=${vsConference}&VsDivision=${vsDivision}
-    `
+  const url = `https://stats.nba.com/stats/playerdashboardbyyearoveryear?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=${leagueID}&Location=&MeasureType=${measureType}&Month=0&OpponentTeamID=${opponentTeamID}&Outcome=&PORound=0&PaceAdjust=${paceAdjust}&PerMode=${perMode}&Period=${period}&PlayerID=${playerID}&PlusMinus=${plusMinus}&Rank=${rank}&Season=${season}&SeasonSegment=&SeasonType=${seasonType}&ShotClockRange=&Split=yoy&VsConference=${vsConference}&VsDivision=${vsDivision}`
+  console.log('url', url)
   const response = await axios.get(url)
   return res.json(response.data)
 }
