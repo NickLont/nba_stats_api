@@ -6,20 +6,20 @@ exports.allTeams = (req, res) => {
   return res.json(teams)
 }
 exports.teamDetails = async (req, res) => {
-  const teamID = validators.teamID(req, res)
+  const teamID = validators.teamID(req.query.teamID, res)
   const url = `https://stats.nba.com/stats/teamdetails?teamID=${teamID}`
   const response = await axios.get(url)
   return res.json(response.data)
 }
 exports.teamRoster = async (req, res) => {
-  const teamID = validators.teamID(req, res)
-  const season = req.query.season ? validators.season(req, res) : '2017-18'
+  const teamID = validators.teamID(req.query.teamID, res)
+  const season = validators.season(req.query.season, res)
   const url = `http://stats.nba.com/stats/commonteamroster?Season=${season}&TeamID=${teamID}`
   const response = await axios.get(url)
   return res.json(response.data)
 }
 exports.teamAllTimeLeaders = async (req, res) => {
-  const teamID = validators.teamID(req, res)
+  const teamID = validators.teamID(req.query.teamID, res)
   const url = `https://stats.nba.com/stats/franchiseleaders?teamID=${teamID}`
   const response = await axios.get(url)
   return res.json(response.data)
