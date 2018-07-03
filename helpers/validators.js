@@ -13,6 +13,15 @@ const _Validate = (value, schema, name, res) => {
 const teamIDSchema = Joi.string().length(10).required()
 const teamID = (teamID, res) => _Validate(teamID, teamIDSchema, 'teamID', res)
 
+const opponentTeamIDSchema = Joi.string().length(10)
+const opponentTeamID = (opponentTeamID, res) => {
+  if (!opponentTeamID) {
+    return '0'
+  } else {
+    return _Validate(opponentTeamID, opponentTeamIDSchema, 'opponentTeamID', res)
+  }
+}
+
 const playerIDSchema = Joi.string().min(1).required()
 const playerID = (playerID, res) => _Validate(playerID, playerIDSchema, 'playerID', res)
 
@@ -50,6 +59,15 @@ const booleanLiteral = (booleanLiteral, res, name) => {
   }
 }
 
+const booleanNumericSchema = Joi.string().valid('0', '1').required()
+const booleanNumeric = (booleanLiteral, res, name) => {
+  if (!booleanLiteral) {
+    return '0'
+  } else {
+    return _Validate(booleanNumeric, booleanNumericSchema, name, res)
+  }
+}
+
 const seasonTypeSchema = Joi.string().valid('Regular Season', 'Pre Season', 'Playoffs').required()
 const seasonType = (seasonType, res) => {
   if (!seasonType) {
@@ -59,14 +77,26 @@ const seasonType = (seasonType, res) => {
   }
 }
 
+const measureTypeSchema = Joi.string().valid('Base', 'Advanced', 'Misc', 'Four Factors', 'Scoring', 'Opponent', 'Usage', 'Defense').required()
+const measureType = (measureType, res) => {
+  if (!measureType) {
+    return 'Base'
+  } else {
+    return _Validate(measureType, measureTypeSchema, 'measureType', res)
+  }
+}
+
 module.exports = {
   validators: {
     playerID,
     teamID,
+    opponentTeamID,
     season,
     leagueID,
     perMode,
     booleanLiteral,
-    seasonType
+    booleanNumeric,
+    seasonType,
+    measureType
   }
 }
