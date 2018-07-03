@@ -10,10 +10,10 @@ const _Validate = (value, schema, name, res) => {
   return value
 }
 
-const teamIDSchema = Joi.string().length(10).required()
+const teamIDSchema = Joi.number().integer().min(1610612737).max(1610612764).required()
 const teamID = (teamID, res) => _Validate(teamID, teamIDSchema, 'teamID', res)
 
-const opponentTeamIDSchema = Joi.string().length(10)
+const opponentTeamIDSchema = Joi.number().integer().min(1610612737).max(1610612764)
 const opponentTeamID = (opponentTeamID, res) => {
   if (!opponentTeamID) {
     return '0'
@@ -22,7 +22,7 @@ const opponentTeamID = (opponentTeamID, res) => {
   }
 }
 
-const playerIDSchema = Joi.string().min(1).required()
+const playerIDSchema = Joi.number().integer().min(1).required()
 const playerID = (playerID, res) => _Validate(playerID, playerIDSchema, 'playerID', res)
 
 const seasonSchema = Joi.string().regex(/^\d{4}-\d{2}$/)
@@ -51,18 +51,18 @@ const perMode = (perMode, res) => {
 }
 
 const booleanLiteralSchema = Joi.string().valid('Y', 'N').required()
-const booleanLiteral = (booleanLiteral, res, name) => {
+const booleanLiteral = (booleanLiteral, res, name, defaultValue) => {
   if (!booleanLiteral) {
-    return 'N'
+    return defaultValue || 'N'
   } else {
     return _Validate(booleanLiteral, booleanLiteralSchema, name, res)
   }
 }
 
-const booleanNumericSchema = Joi.string().valid('0', '1').required()
-const booleanNumeric = (booleanLiteral, res, name) => {
-  if (!booleanLiteral) {
-    return '0'
+const booleanNumericSchema = Joi.valid('0', '1', 0, 1).required()
+const booleanNumeric = (booleanNumeric, res, name, defaultValue) => {
+  if (!booleanNumeric) {
+    return defaultValue || '0'
   } else {
     return _Validate(booleanNumeric, booleanNumericSchema, name, res)
   }

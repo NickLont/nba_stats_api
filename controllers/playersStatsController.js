@@ -2,7 +2,7 @@ const axios = require('axios')
 const {validators} = require('../helpers/validators')
 
 exports.allPlayers = async (req, res) => {
-  const currentSeasonOnly = req.query.currentSeasonOnly ? req.query.currentSeasonOnly : '1'
+  const currentSeasonOnly = validators.booleanNumeric(req.query.currentSeasonOnly, res, 'currentSeasonOnly', 1)
   const season = validators.season(req.query.season, res)
   const leagueID = validators.leagueID(req.query.leagueID, res)
   const url = `http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=${currentSeasonOnly}&Season=${season}&LeagueID=${leagueID}`
