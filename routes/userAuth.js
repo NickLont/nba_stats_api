@@ -49,7 +49,7 @@ const {catchErrors} = require('../handlers/errorHandlers')
  *         in: body
  *         required: true
  *         schema:
- *           $ref: '#/definitions/User'
+ *           $ref: '#/definitions/NewUser'
  *     responses:
  *       200:
  *         description: New user succesfully created
@@ -76,7 +76,7 @@ router.post('/signup', catchErrors(authController.signup))
  *         in: body
  *         required: true
  *         schema:
- *           $ref: '#/definitions/NewUser'
+ *           $ref: '#/definitions/User'
  *     responses:
  *       200:
  *         description: JWT Authorized
