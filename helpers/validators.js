@@ -71,7 +71,7 @@ const booleanNumeric = (booleanNumeric, res, name, defaultValue) => {
 const seasonTypeSchema = Joi.string().valid('Regular Season', 'Pre Season', 'Playoffs').required()
 const seasonType = (seasonType, res) => {
   if (!seasonType) {
-    return 'Reguler Season'
+    return 'Regular Season'
   } else {
     return _Validate(seasonType, seasonTypeSchema, 'seasonType', res)
   }
