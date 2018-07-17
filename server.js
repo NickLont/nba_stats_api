@@ -1,8 +1,6 @@
 // import environmental variables from our .env file
 require('dotenv').config({path: '.env'})
 
-const swagger = require('./swagger')
-
 // MongoDB database connection
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE)
@@ -19,7 +17,6 @@ const app = require('./app')
 // Bind app to port
 app.set('port', process.env.PORT || 3001)
 
-swagger(app)
 // Start app
 const server = app.listen(app.get('port'), () => {
   console.log(`Express running → PORT ${server.address().port}`)

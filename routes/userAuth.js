@@ -15,12 +15,15 @@ const {catchErrors} = require('../handlers/errorHandlers')
  *     properties:
  *       username:
  *         type: string
+ *         example: Nick
  *       password:
  *         type: string
  *         format: password
+ *         example: 1234
  *       email:
  *         type: string
  *         format: email
+ *         example: nick@touchtribe.nl
  *   User:
  *     type: object
  *     required:
@@ -29,9 +32,11 @@ const {catchErrors} = require('../handlers/errorHandlers')
  *     properties:
  *       username:
  *         type: string
+ *         example: Nick
  *       password:
  *         type: string
  *         format: password
+ *         example: 1234
  */
 
 /**

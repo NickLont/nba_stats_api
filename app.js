@@ -3,10 +3,9 @@
 const express = require('express')
 const path = require('path')
 const fs = require('fs')
-const swaggerJSDoc = require('swagger-jsdoc')
+const swagger = require('./swagger')
 
 const app = express()
-const router = express.Router()
 
 const userAuthRoutes = require('./routes/userAuth')
 const playersStatsRoutes = require('./routes/playersStats')
@@ -15,24 +14,6 @@ const bodyParser = require('body-parser')
 const bearerToken = require('express-bearer-token')
 
 // Registration of middleware for express configuration
-
-// Swagger Definition
-const swaggerDefinition = {
-  info: {
-    title: 'NBA Stats Api',
-    version: '1.0.0',
-    description: 'NBA Stats Api'
-  },
-  host: `localhost:${process.env.PORT || 3001}`,
-  basePath: '/'
-}
-// Swagger options
-const options = {
-  swaggerDefinition: swaggerDefinition,
-  apis: ['./routes/playersStats.js', './routes/userAuth.js', './routes/teamsStats.js']
-}
-// swagger-jsdoc init
-const swaggerSpec = swaggerJSDoc(options)
 
 // Logger for timestamp and method whenever we get an API call
 app.use((req, res, next) => {
@@ -54,6 +35,10 @@ app.use(bearerToken())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+// Enable Swagger
+// Access .json definition in /swagger.json and docs at /swagger-docs
+swagger(app)
+
 // Maintenance html serve
 // app.use((req, res, next) => {
 //   res.sendFile(path.resolve('./views/maintenance.html'))
@@ -64,9 +49,5 @@ app.use(bodyParser.json())
 app.use('/user', userAuthRoutes)
 app.use('/stats/players', playersStatsRoutes)
 app.use('/stats/teams', teamsStatsRoutes)
-app.use('/swagger', router.get('/', (req, res) => {
-  res.setHeader('Content-Type', 'application/json')
-  res.send(swaggerSpec)
-}))
 
 module.exports = app

@@ -6,7 +6,7 @@ const Joi = require('joi')
 // user schema to apply limitations to User attributes
 const userSchema = Joi.object().keys({
   username: Joi.string().alphanum().min(3).max(30).required(),
-  password: Joi.string().min(3).max(30).required(),
+  password: Joi.string().alphanum().min(3).max(30).required(),
   email: Joi.string().email().required()
 })
 exports.homePage = (req, res) => {
@@ -64,7 +64,7 @@ exports.signin = async (req, res) => {
       failed: 'No such registered username'
     })
   }
-  await bcrypt.compare(req.body.password, user.password, (err, result) => {
+  await bcrypt.compare(req.body.password.toString(), user.password, (err, result) => {
     if (err) {
       return res.status(401).json({
         failed: 'Unauthorized access'

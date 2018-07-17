@@ -8,10 +8,8 @@ const swagger = (app) => {
       version: '1.0.0',
       description: 'NBA Stats Api'
     },
-    host: {
-      host: `localhost:${process.env.PORT || 3001}`,
-      basePath: '/'
-    }
+    host: `localhost:${process.env.PORT || 3001}`,
+    basePath: '/'
   }
   // Swagger options
   const options = {
