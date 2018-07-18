@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Enable Swagger
-// Access .json definition in /swagger.json and docs at /swagger-docs
+// Access swagger definition at /swagger.json and swagger itself at /swagger-docs
 swagger(app)
 
 // Maintenance html serve
