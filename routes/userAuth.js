@@ -53,7 +53,7 @@ const {catchErrors} = require('../handlers/errorHandlers')
  * /user/signup:
  *   post:
  *     tags:
- *       - users
+ *       - Users
  *     description: Creates a new user
  *     produces:
  *       - application/json
@@ -80,7 +80,7 @@ router.post('/signup', catchErrors(authController.signup))
  * /user/signin:
  *   post:
  *     tags:
- *       - users
+ *       - Users
  *     description: Creates a new user
  *     produces:
  *       - application/json

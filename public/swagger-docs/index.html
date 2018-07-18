@@ -36,7 +36,7 @@
     <script src="./swagger-ui-bundle.js"> </script>
     <script src="./swagger-ui-standalone-preset.js"> </script>
     <script>
-    window.onload = function() {
+    window.onload = () => {
 
       // Build a system
       const ui = SwaggerUIBundle({
@@ -54,6 +54,10 @@
       })
 
       window.ui = ui
+      setTimeout(() => {
+        const models = document.querySelector(".models")
+        models.style.display = 'none'
+      }, 100)
     }
   </script>
   </body>
