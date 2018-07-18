@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 const teamsStatsController = require('../controllers/teamsStatsController')
 const {catchErrors} = require('../handlers/errorHandlers')
-// const verifyToken = require('../helpers/index')
+const {verifyToken} = require('../helpers/index')
 
 /**
  * @swagger
- * /stats/teams/allteams:
+ * /stats/teams/allTeams:
  *   get:
  *     tags:
  *       - Teams
@@ -25,11 +25,11 @@ const {catchErrors} = require('../handlers/errorHandlers')
  *       403:
  *         $ref: '#/definitions/defaultResponses/403'
  */
-router.get('/allteams', catchErrors(teamsStatsController.allTeams))
+router.get('/allTeams', verifyToken, teamsStatsController.allTeams)
 
 /**
  * @swagger
- * /stats/teams/teamdetails:
+ * /stats/teams/teamDetails:
  *   get:
  *     tags:
  *       - Teams
@@ -50,11 +50,11 @@ router.get('/allteams', catchErrors(teamsStatsController.allTeams))
  *       403:
  *         $ref: '#/definitions/defaultResponses/403'
  */
-router.get('/teamdetails', catchErrors(teamsStatsController.teamDetails))
+router.get('/teamDetails', verifyToken, catchErrors(teamsStatsController.teamDetails))
 
 /**
  * @swagger
- * /stats/teams/teamroster:
+ * /stats/teams/teamRoster:
  *   get:
  *     tags:
  *       - Teams
@@ -76,11 +76,11 @@ router.get('/teamdetails', catchErrors(teamsStatsController.teamDetails))
  *       403:
  *         $ref: '#/definitions/defaultResponses/403'
  */
-router.get('/teamroster', catchErrors(teamsStatsController.teamRoster))
+router.get('/teamRoster', verifyToken, catchErrors(teamsStatsController.teamRoster))
 
 /**
  * @swagger
- * /stats/teams/teamalltimeleaders:
+ * /stats/teams/teamAllTimeLeaders:
  *   get:
  *     tags:
  *       - Teams
@@ -101,11 +101,11 @@ router.get('/teamroster', catchErrors(teamsStatsController.teamRoster))
  *       403:
  *         $ref: '#/definitions/defaultResponses/403'
  */
-router.get('/teamalltimeleaders', catchErrors(teamsStatsController.teamAllTimeLeaders))
+router.get('/teamAllTimeLeaders', verifyToken, catchErrors(teamsStatsController.teamAllTimeLeaders))
 
 /**
  * @swagger
- * /stats/teams/teamlogos:
+ * /stats/teams/teamLogos:
  *   get:
  *     tags:
  *       - Teams
@@ -126,6 +126,6 @@ router.get('/teamalltimeleaders', catchErrors(teamsStatsController.teamAllTimeLe
  *       403:
  *         $ref: '#/definitions/defaultResponses/403'
  */
-router.get('/teamlogos', catchErrors(teamsStatsController.teamLogos))
+router.get('/teamLogos', verifyToken, catchErrors(teamsStatsController.teamLogos))
 
 module.exports = router

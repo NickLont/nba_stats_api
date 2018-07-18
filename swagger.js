@@ -23,7 +23,7 @@ const swagger = (app) => {
   // Swagger options
   const options = {
     swaggerDefinition: swaggerDefinition,
-    apis: ['./routes/playersStats.js', './routes/userAuth.js', './routes/teamsStats.js']
+    apis: ['./routes/userAuth.js', './routes/playersStats.js', './routes/teamsStats.js', './swaggerDefinitions.js']
   }
   // swagger-jsdoc init
   const swaggerSpec = swaggerJSDoc(options)
