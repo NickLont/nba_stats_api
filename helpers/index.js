@@ -1,8 +1,12 @@
 const jwt = require('jsonwebtoken')
 
 const verifyToken = (req, res, next) => {
-  const token = req.token
-
+  let token
+  if (req.token) {
+    token = req.token
+  } else if (req.get('Authorization')) {
+    token = req.get('Authorization')
+  }
   if (!token) {
     return res.status(403).json({
       failed: 'No token provided'

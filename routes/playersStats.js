@@ -52,6 +52,8 @@ router.get('/', verifyToken, authController.homePage)
  *   get:
  *     tags:
  *       - Players
+ *     security:
+ *       - JWT: []
  *     description: Returns all players from the selected season and league
  *     produces:
  *       - application/json
@@ -70,7 +72,7 @@ router.get('/', verifyToken, authController.homePage)
  *         $ref: '#/definitions/defaultResponses/403'
  */
 
-router.get('/allplayers', catchErrors(playersStatsController.allPlayers))
+router.get('/allplayers', verifyToken, catchErrors(playersStatsController.allPlayers))
 router.get('/playerImage', catchErrors(playersStatsController.playerImage))
 router.get('/playerPersonalInfo', verifyToken, catchErrors(playersStatsController.playerPersonalInfo))
 router.get('/playerCareerInfo', catchErrors(playersStatsController.playerCareerInfo))

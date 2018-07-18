@@ -40,7 +40,7 @@ const {catchErrors} = require('../handlers/errorHandlers')
  *   Token:
  *     type: object
  *     properties:
- *       succeess:
+ *       success:
  *         type: string
  *         example: JWT Authorized
  *       token:
@@ -98,6 +98,8 @@ router.post('/signup', catchErrors(authController.signup))
  *           $ref: '#/definitions/Token'
  *       400:
  *         description: Unauthorized access
+ *       401:
+ *         description: User not found
  */
 router.post('/signin', catchErrors(authController.signin))
 

@@ -10,7 +10,15 @@ const swagger = (app) => {
     },
     host: `localhost:${process.env.PORT || 3001}`,
     basePath: '/',
-    schemes: ['http']
+    schemes: ['http', 'https'],
+    securityDefinitions: {
+      JWT: {
+        type: 'apiKey',
+        description: 'JWT authorization of an API',
+        name: 'Authorization',
+        in: 'header'
+      }
+    }
   }
   // Swagger options
   const options = {
