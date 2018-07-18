@@ -33,6 +33,14 @@ const {verifyToken} = require('../helpers/index')
  *       default: "2017-18"
  *       required: false
  *       description: Season required, format "2017-18"
+ *     teamID:
+ *       in: query
+ *       name: teamID
+ *       schema:
+ *         type: string
+ *       default: "1610612764"
+ *       required: true
+ *       description: ID of all NBA teams
  *     season-required:
  *       in: query
  *       name: season

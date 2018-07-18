@@ -25,13 +25,10 @@ exports.teamAllTimeLeaders = async (req, res) => {
   return res.json(response.data)
 }
 exports.teamLogos = async (req, res) => {
-  if (!req.query.teamABR) {
-    return res.status(400).json('team name abbreviation (teamABR) is required')
-  }
-  const teamABR = req.query.teamABR
-  // If teamABR parameter exists in our teams array continue, otherwise give error message
-  if (teams.find(team => team.abr === teamABR)) {
-    const url = `http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/${teamABR}.png`
+  const teamID = validators.teamID(req.query.teamID, res)
+  const result = teams.filter(team => team.id === teamID)
+  if (result) {
+    const url = `http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/${result[0].abr}.png`
     const response = await axios({
       method: 'GET',
       url,
@@ -40,6 +37,6 @@ exports.teamLogos = async (req, res) => {
     res.set('Content-Type', 'image/png')
     return res.send(response.data)
   } else {
-    return res.status(400).json('Wrong team abbreviation')
+    return res.status(400).json('Wrong teamID')
   }
 }
