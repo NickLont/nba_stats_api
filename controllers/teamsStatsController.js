@@ -1,4 +1,3 @@
-const axios = require('axios')
 const teams = require('../constants/teams')
 const {validators} = require('../helpers/validators')
 const redis = require('../redis')
