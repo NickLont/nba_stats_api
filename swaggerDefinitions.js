@@ -75,7 +75,7 @@
  *         type: string
  *       default: "1610612764"
  *       required: true
- *       description: ID of all NBA teams
+ *       description: ID of the NBA team
  *     season-required:
  *       in: query
  *       name: season
