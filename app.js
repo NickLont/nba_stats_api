@@ -4,6 +4,7 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs')
 const swagger = require('./swagger')
+const responseTime = require('response-time')
 
 const app = express()
 
@@ -38,6 +39,9 @@ app.use(bodyParser.json())
 // Enable Swagger
 // Access swagger definition at /swagger.json and swagger itself at /swagger-docs
 swagger(app)
+
+// use response-time middleware
+app.use(responseTime())
 
 // Maintenance html serve
 // app.use((req, res, next) => {

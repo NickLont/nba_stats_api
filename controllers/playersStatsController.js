@@ -1,14 +1,26 @@
 const axios = require('axios')
 const {validators} = require('../helpers/validators')
+const redis = require('../redis')
 
 exports.allPlayers = async (req, res) => {
   const currentSeasonOnly = validators.booleanNumeric(req.query.currentSeasonOnly, res, 'currentSeasonOnly', 1)
   const season = validators.season(req.query.season, res)
   const leagueID = validators.leagueID(req.query.leagueID, res)
-  const url = `http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=${currentSeasonOnly}&Season=${season}&LeagueID=${leagueID}`
-  const response = await axios.get(url)
-
-  return res.json(response.data)
+  return redis.client.get(`allPlayers${JSON.stringify(req.query)}`, async (err, result) => {
+    if (err) {
+      throw new Error(err)
+    }
+    if (result) {
+      const resultJSON = JSON.parse(result)
+      return res.json(resultJSON)
+    } else {
+      const url = `http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=${currentSeasonOnly}&Season=${season}&LeagueID=${leagueID}`
+      const response = await axios.get(url)
+      const data = response.data
+      redis.client.setex(`allPlayers${JSON.stringify(req.query)}`, 3600, JSON.stringify({source: 'redis cache', data}))
+      return res.json({source: 'nba.stats remote api', data})
+    }
+  })
 }
 exports.playerImage = async (req, res) => {
   const playerID = validators.playerID(req.query.playerID, res)
