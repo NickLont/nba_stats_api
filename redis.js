@@ -1,7 +1,10 @@
 const redis = require('redis')
 const axios = require('axios')
 
-const client = redis.createClient({return_buffers: true})
+const client = redis.createClient({
+  return_buffers: true,
+  host: 'redis'
+})
 client.on('error', (err) => {
   console.log(`Error: ${err}`)
 })
