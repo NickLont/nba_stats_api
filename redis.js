@@ -30,13 +30,10 @@ const applyRedis = async (req, res, name, url) => {
 }
 const applyRedisForImage = async (req, res, name, url) => {
   return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
-    console.log('reddis key is: ', `${name}${JSON.stringify(req.query)}`)
     if (err) {
       throw new Error(err)
     }
     if (result) {
-      // const resultJSON = JSON.parse(result)
-      // const i = Buffer.from(result)
       res.set('Content-Type', 'image/png')
       res.send(result)
     } else {
