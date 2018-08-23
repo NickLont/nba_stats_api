@@ -13,7 +13,7 @@ client.on('error', (err) => {
 // The key we create for each call is its name + the query params used in the call
 const applyRedis = async (req, res, name, url) => {
   return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
-    console.log('reddis key is: ', `${name}${JSON.stringify(req.query)}`)
+    // console.log('reddis key is: ', `${name}${JSON.stringify(req.query)}`)
     if (err) {
       throw new Error(err)
     }

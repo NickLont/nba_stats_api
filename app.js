@@ -49,6 +49,11 @@ app.use(responseTime())
 //   next()
 //   // TODO add a check to .env file for maintenance
 // })
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 
 app.use('/user', userAuthRoutes)
 app.use('/stats/players', playersStatsRoutes)

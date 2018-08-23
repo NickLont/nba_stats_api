@@ -4,6 +4,9 @@ FROM node:10
 ## Creating base dir
 RUN mkdir /nbaStatsApi
 
+## Globally install nodemon inside container
+RUN npm install nodemon -g
+
 ## Set base dir as working dir for Docker
 WORKDIR /nbaStatsApi
 
@@ -20,4 +23,4 @@ ENV NODE_ENV development
 EXPOSE 3010
 
 ## run the application
-CMD npm start
+CMD ["yarn", "start"]
