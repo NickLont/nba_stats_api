@@ -1,5 +1,7 @@
 .git
+.gitignore
 .idea
 **/node_modules
 .DS_store
 .data
+docker-compose.yml

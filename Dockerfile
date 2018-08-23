@@ -2,19 +2,20 @@
 FROM node:10
 
 ## Creating base dir
-RUN mkdir /nbaStatsApi
+RUN mkdir -p /nbaStatsApi
 
 ## Globally install nodemon inside container
-RUN npm install nodemon -g
+RUN npm install nodemon yarn -g
 
 ## Set base dir as working dir for Docker
 WORKDIR /nbaStatsApi
 
 ## Copy and install packages
-COPY ./package.json /nbaStatsApi/package.json
-COPY ./package-lock.json /nbaStatsApi/package-lock.json
-RUN npm i --silent
-COPY . /nbaStatsApi/
+COPY package.json .
+COPY package-lock.json .
+COPY yarn.lock .
+RUN yarn
+COPY . .
 
 ## Set environment to 'development'
 ENV NODE_ENV development
