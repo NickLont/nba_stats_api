@@ -29,6 +29,14 @@ app.use((req, res, next) => {
   })
   next()
 })
+// Maintenance html serve
+app.use((req, res, next) => {
+  if (process.env.MAINTENANCE === 'true') {
+    res.sendFile(path.resolve('./views/maintenance.html'))
+  } else {
+    next()
+  }
+})
 app.use(express.static(path.resolve(__dirname, 'public'))) // set the static directory for our public files
 // Take token from header Authentication: Bearer :token and put it in req.token
 app.use(bearerToken())
@@ -43,12 +51,7 @@ swagger(app)
 // use response-time middleware
 app.use(responseTime())
 
-// Maintenance html serve
-// app.use((req, res, next) => {
-//   res.sendFile(path.resolve('./views/maintenance.html'))
-//   next()
-//   // TODO add a check to .env file for maintenance
-// })
+// add headers to responses
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Authorization, Origin, X-Requested-With, Content-Type, Accept')
