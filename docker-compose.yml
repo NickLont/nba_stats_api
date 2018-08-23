@@ -9,6 +9,14 @@ services:
       - /nbaStatsApi/node_modules
     ports:
       - "3010:3010"
-      - "5858:5858"
+    restart: always
   redis:
     image: "redis:alpine"
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "3011:3011"
+      - "80:80"
+    links:
+      - api:api
