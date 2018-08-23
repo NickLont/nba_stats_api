@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Enable Swagger
-// Access swagger definition at /swagger.json and swagger itself at /swagger-docs
+// Access swagger definition at /swagger.json and swagger itself at /swagger
 swagger(app)
 
 // use response-time middleware
