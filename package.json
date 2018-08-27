@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha 'test/apiTest.js'"
+    "test": "ava --verbose"
   },
   "author": "",
   "license": "ISC",
@@ -18,13 +18,15 @@
     "express-bearer-token": "^2.1.1",
     "joi": "^13.4.0",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.9",
+    "mongodb-memory-server": "^2.0.1",
+    "mongoose": "5.2.8",
     "nodemon": "^1.18.3",
     "redis": "^2.8.0",
     "response-time": "^2.3.2",
     "swagger-jsdoc": "^3.0.2"
   },
   "devDependencies": {
+    "ava": "1.0.0-beta.7",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^7.0.1",
