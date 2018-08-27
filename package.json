@@ -5,7 +5,14 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "ava --verbose"
+    "test": "ava"
+  },
+  "ava": {
+    "files": [
+      "tests/user.js"
+    ],
+    "serial": true,
+    "verbose": true
   },
   "author": "",
   "license": "ISC",

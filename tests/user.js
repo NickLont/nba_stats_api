@@ -17,7 +17,7 @@ test.before(async () => {
 })
 
 test.beforeEach(async () => {
-  const hashedPassword = bcrypt.hashSync('1234', 12)
+  const hashedPassword = bcrypt.hashSync('123456', 12)
   const user = new User({
     username: 'Nick',
     password: hashedPassword,
@@ -32,28 +32,27 @@ test.after.always(async () => {
   mongoServer.stop()
 })
 
-test.serial('log in user', async t => {
-  const res = await request(app)
-    .post('/user/signin')
-    .send({
-      'username': 'Nick',
-      'password': '1234'
-    })
-  t.is(res.status, 200)
-  t.is(res.body.success, 'JWT Authorized')
-  t.truthy(res.body.token)
-})
-test.serial('sign in user', async t => {
+test('sign in user', async t => {
   const res = await request(app)
     .post('/user/signup')
     .send({
       'username': 'Nick2',
-      'password': '1234',
+      'password': '123456',
       'email': 'nick2@touchtribe.nl'
     })
   t.is(res.status, 200)
   t.is(res.body.success, 'New user succesfully created')
-  // t.truthy(res.body.token)
+})
+test('log in user', async t => {
+  const res = await request(app)
+    .post('/user/signin')
+    .send({
+      'username': 'Nick',
+      'password': '123456'
+    })
+  t.is(res.status, 200)
+  t.is(res.body.success, 'JWT Authorized')
+  t.truthy(res.body.token)
 })
 
 // test('foo', t => {
