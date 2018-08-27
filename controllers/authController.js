@@ -49,8 +49,7 @@ exports.signup = async (req, res) => {
         password: hash,
         email: req.body.email
       })
-      let result = await user.save()
-      console.log('user being added is: ', result)
+      await user.save()
       res.status(200).json({
         success: 'New user succesfully created'
       })
@@ -66,7 +65,7 @@ exports.signin = async (req, res) => {
   }
   await bcrypt.compare(req.body.password.toString(), user.password, (err, result) => {
     if (err) {
-      return res.status(401).json({
+      return res.status(400).json({
         failed: 'Unauthorized access'
       })
     }
@@ -85,7 +84,7 @@ exports.signin = async (req, res) => {
       })
     }
     return res.status(401).json({
-      failed: 'Unauthorized access'
+      failed: 'Wrong Password'
     })
   })
 }

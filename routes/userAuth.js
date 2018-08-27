@@ -51,9 +51,9 @@ router.post('/signup', catchErrors(authController.signup))
  *         schema:
  *           $ref: '#/definitions/parameters/Token'
  *       400:
- *         description: Unauthorized access
+ *         description: Server unable to process request
  *       401:
- *         description: User not found
+ *         description: No such registered username || Wrong password || Unauthorized access
  */
 router.post('/signin', catchErrors(authController.signin))
 
