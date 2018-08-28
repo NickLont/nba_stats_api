@@ -9,6 +9,7 @@ import User from '../models/user'
 
 require('dotenv').config()
 
+// In memory mongo server setup
 const mongoServer = new MongodbMemoryServer()
 
 test.before(async () => {
@@ -16,6 +17,7 @@ test.before(async () => {
   await mongoose.connect(uri, { useNewUrlParser: true })
 })
 
+// User entry before each test
 test.beforeEach(async () => {
   const hashedPassword = bcrypt.hashSync('123456', 12)
   const user = new User({
@@ -26,6 +28,7 @@ test.beforeEach(async () => {
   await user.save()
 })
 
+// User removal after tests and teardown
 test.afterEach.always(() => User.remove())
 test.after.always(async () => {
   mongoose.disconnect()

@@ -9,12 +9,14 @@
   },
   "ava": {
     "files": [
-      "tests/user.js"
+      "tests/users.js",
+      "tests/players.js"
     ],
-    "serial": true,
-    "verbose": true
+    "serial": false,
+    "verbose": true,
+    "inherit": true
   },
-  "author": "",
+  "author": "NickLont",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
