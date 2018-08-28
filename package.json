@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "ava"
+    "test": "ava",
+    "cover": "nyc yarn test"
   },
   "ava": {
     "files": [
@@ -15,6 +16,13 @@
     "serial": false,
     "verbose": true,
     "inherit": true
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ]
   },
   "author": "NickLont",
   "license": "ISC",
@@ -30,6 +38,7 @@
     "mongodb-memory-server": "^2.0.1",
     "mongoose": "5.2.8",
     "nodemon": "^1.18.3",
+    "nyc": "^13.0.1",
     "redis": "^2.8.0",
     "response-time": "^2.3.2",
     "swagger-jsdoc": "^3.0.2"
