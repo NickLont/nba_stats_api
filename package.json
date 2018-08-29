@@ -40,7 +40,6 @@
     "mongodb-memory-server": "^2.0.1",
     "mongoose": "5.2.8",
     "nodemon": "^1.18.3",
-    "nyc": "^13.0.1",
     "redis": "^2.8.0",
     "response-time": "^2.3.2",
     "swagger-jsdoc": "^3.0.2"
@@ -53,6 +52,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.1.0",
     "jest": "^23.5.0",
+    "nyc": "^13.0.1",
     "superagent": "^3.8.3",
     "supertest": "^3.1.0"
   }
