@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "start:docker": "DOCKER_ENV=true nodemon server.js",
     "test": "NODE_ENV=testing ava",
-    "cover": "nyc NODE_ENV=testing ava"
+    "cover": "nyc yarn test"
   },
   "ava": {
     "files": [

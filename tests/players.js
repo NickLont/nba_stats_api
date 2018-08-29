@@ -46,10 +46,6 @@ test.after.always(async () => {
   mongoose.disconnect()
   mongoServer.stop()
 })
-// test('foo', t => {
-//   // console.log('token: ', token)
-//   t.pass()
-// })
 test('all players', async t => {
   const res = await request(app)
     .get('/stats/players/allplayers')
