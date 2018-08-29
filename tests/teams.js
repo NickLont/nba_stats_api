@@ -46,55 +46,37 @@ test.after.always(async () => {
   mongoose.disconnect()
   mongoServer.stop()
 })
-// test('foo', t => {
-//   // console.log('token: ', token)
-//   t.pass()
-// })
-test('all players', async t => {
+test('all teams', async t => {
   const res = await request(app)
-    .get('/stats/players/allplayers')
+    .get('/stats/teams/allTeams')
     .set('Authorization', `Bearer ${token}`)
   t.is(res.status, 200)
   t.truthy(res.body)
 })
-test('player images', async t => {
+test('team details', async t => {
   const res = await request(app)
-    .get('/stats/players/playerImage?playerID=101187')
+    .get('/stats/teams/teamDetails?teamID=1610612764')
     .set('Authorization', `Bearer ${token}`)
   t.is(res.status, 200)
   t.truthy(res.body)
 })
-test('player personal info', async t => {
+test('team roster', async t => {
   const res = await request(app)
-    .get('/stats/players/playerPersonalInfo?playerID=101187')
+    .get('/stats/teams/teamRoster?teamID=1610612764')
     .set('Authorization', `Bearer ${token}`)
   t.is(res.status, 200)
   t.truthy(res.body)
 })
-test('player career info', async t => {
+test('team all-time leaders', async t => {
   const res = await request(app)
-    .get('/stats/players/playerCareerInfo?playerID=101187')
+    .get('/stats/teams/teamAllTimeLeaders?teamID=1610612764')
     .set('Authorization', `Bearer ${token}`)
   t.is(res.status, 200)
   t.truthy(res.body)
 })
-test('player league leaders', async t => {
+test('team logos', async t => {
   const res = await request(app)
-    .get('/stats/players/playerLeagueLeaders?season=2017-18')
-    .set('Authorization', `Bearer ${token}`)
-  t.is(res.status, 200)
-  t.truthy(res.body)
-})
-test('player year over year', async t => {
-  const res = await request(app)
-    .get('/stats/players/playerYearOverYear?playerID=101187')
-    .set('Authorization', `Bearer ${token}`)
-  t.is(res.status, 200)
-  t.truthy(res.body)
-})
-test('player year shot chart', async t => {
-  const res = await request(app)
-    .get('/stats/players/playerShotChart?playerID=101187&season=2017-18')
+    .get('/stats/teams/teamLogos?teamID=1610612764')
     .set('Authorization', `Bearer ${token}`)
   t.is(res.status, 200)
   t.truthy(res.body)

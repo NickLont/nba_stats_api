@@ -16,19 +16,21 @@ const bearerToken = require('express-bearer-token')
 
 // Registration of middleware for express configuration
 
-// Logger for timestamp and method whenever we get an API call
-app.use((req, res, next) => {
-  const now = new Date().toString()
-  const colouredLog = `\x1b[36mTimestamp\x1b[0m: ${now} \n\x1b[31mMethod\x1b[0m: ${req.method} \n\x1b[34mPATH\x1b[0m: ${req.url}\n\x1b[36mIP\x1b[0m: ${req.ip}\n`
-  console.log(colouredLog)
-  const log = `\nTimestamp: ${now.toString()} \nMethod: ${req.method} \nPATH: ${req.url}\nIP: ${req.ip}\n`
-  fs.appendFile('server.log', log, (err) => {
-    if (err) {
-      console.log('Unable to append to server.log')
-    }
+// Logger for timestamp and method whenever we get an API call if in development environment
+if (process.env.NODE_ENV === 'development') {
+  app.use((req, res, next) => {
+    const now = new Date().toString()
+    const colouredLog = `\x1b[36mTimestamp\x1b[0m: ${now} \n\x1b[31mMethod\x1b[0m: ${req.method} \n\x1b[34mPATH\x1b[0m: ${req.url}\n\x1b[36mIP\x1b[0m: ${req.ip}\n`
+    console.log(colouredLog)
+    const log = `\nTimestamp: ${now.toString()} \nMethod: ${req.method} \nPATH: ${req.url}\nIP: ${req.ip}\n`
+    fs.appendFile('server.log', log, (err) => {
+      if (err) {
+        console.log('Unable to append to server.log')
+      }
+    })
+    next()
   })
-  next()
-})
+}
 // Maintenance html serve
 app.use((req, res, next) => {
   if (process.env.MAINTENANCE === 'true') {

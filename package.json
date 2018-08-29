@@ -6,13 +6,14 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:docker": "DOCKER_ENV=true nodemon server.js",
-    "test": "ava",
-    "cover": "nyc yarn test"
+    "test": "NODE_ENV=testing ava",
+    "cover": "nyc NODE_ENV=testing ava"
   },
   "ava": {
     "files": [
       "tests/users.js",
-      "tests/players.js"
+      "tests/players.js",
+      "tests/teams.js"
     ],
     "serial": false,
     "verbose": true,
