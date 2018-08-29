@@ -12,9 +12,8 @@ WORKDIR /nbaStatsApi
 
 ## Copy and install packages
 COPY package.json .
-COPY package-lock.json .
 COPY yarn.lock .
-RUN yarn
+RUN yarn install --silent
 COPY . .
 
 ## Set environment to 'development'
@@ -24,4 +23,4 @@ ENV NODE_ENV development
 EXPOSE 3010
 
 ## run the application
-CMD ["yarn", "start"]
+CMD ["yarn", "start:docker"]

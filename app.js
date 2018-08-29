@@ -61,5 +61,4 @@ app.use((req, res, next) => {
 app.use('/user', userAuthRoutes)
 app.use('/stats/players', playersStatsRoutes)
 app.use('/stats/teams', teamsStatsRoutes)
-
 module.exports = app

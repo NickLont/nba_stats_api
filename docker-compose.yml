@@ -10,6 +10,8 @@ services:
     ports:
       - "3010:3010"
     restart: always
+    links:
+      - redis
   redis:
     image: "redis:alpine"
   nginx:

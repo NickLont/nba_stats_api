@@ -1,19 +1,19 @@
 const redis = require('redis')
 const axios = require('axios')
 
+const host = process.env.DOCKER_ENV === 'true' ? 'redis' : 'localhost'
 const client = redis.createClient({
   return_buffers: true,
-  host: 'redis'
+  host
 })
 client.on('error', (err) => {
-  console.log(`Error: ${err}`)
+  console.log(`Redis Error: ${err}`)
 })
 // Check if key exists in Redis memory. If yes serve it,
 // if not make a new call and store the key/value pair
 // The key we create for each call is its name + the query params used in the call
 const applyRedis = async (req, res, name, url) => {
   return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
-    // console.log('reddis key is: ', `${name}${JSON.stringify(req.query)}`)
     if (err) {
       throw new Error(err)
     }

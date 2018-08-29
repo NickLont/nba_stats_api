@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
+    "start:docker": "DOCKER_ENV=true nodemon server.js",
     "test": "ava",
     "cover": "nyc yarn test"
   },
