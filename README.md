@@ -1,4 +1,11 @@
 ## **NBA Stats Api**
+> An API with statistics about current and retired NBA players and teamsr
+
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
+[![GitHub stars](https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Naereen/StrapDown.js/stargazers/)
+
 
 ### Introduction
 
@@ -49,6 +56,8 @@ The lock icon should now appear locked and the user should have access to all of
  ![Example](http://recordit.co/2nqMzIUitH.gif)
 <br />
 <br />
+To use the endpoints programmatically, the token returned from the `/user/signin` endpoint should be placed the Authorization header, with a value of either Bearer + Token (`Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAdG91Y2h0cmliZS5ubCIsIl9pZCI6IjViMzI1ODZkY2Y1MjNiZmI5NzZkNjk4NiIsImlhdCI6MTUzNTYyOTcxNywiZXhwIjoxNTM1NjM2OTE3fQ.anuW3jv8i84SuHVm-2T5ITgini_e_LntAWF9Bp5zU2s`)
+ OR just the token (`Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAdG91Y2h0cmliZS5ubCIsIl9pZCI6IjViMzI1ODZkY2Y1MjNiZmI5NzZkNjk4NiIsImlhdCI6MTUzNTYyOTcxNywiZXhwIjoxNTM1NjM2OTE3fQ.anuW3jv8i84SuHVm-2T5ITgini_e_LntAWF9Bp5zU2s`)
 
 ### Technologies used / features
 
@@ -64,3 +73,14 @@ MongoDB database hosted in [https://mlab.com/](https://mlab.com/) with [mongoose
 [redis 4.0.11](https://redis.io/) for in-memory data caching <br/>
 [nginx 1.15.2](https://www.nginx.com/) as a reverse-proxy <br/>
 [Docker 18.06.0](https://www.docker.com/) to isolate the different parts of the application to containers and Compose to run them
+
+### Licence
+This project is licensed under the MIT License
+
+### Contributing
+
+1. Fork it (<https://github.com/NickLont/nba_stats_api/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
