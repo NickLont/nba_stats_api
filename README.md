@@ -46,7 +46,7 @@ Then, copy the `token` value, press the green `Authorize` button at the top righ
 The lock icon should now appear locked and the user should have access to all of the protected endpoints.
 <br />
 <br />
-<!-- ![Example](http://recordit.co/2nqMzIUitH.gif) -->
+ ![Example](http://recordit.co/2nqMzIUitH.gif)
 <br />
 <br />
 
