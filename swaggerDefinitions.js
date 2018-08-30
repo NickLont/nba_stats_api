@@ -29,7 +29,7 @@
  *         email:
  *           type: string
  *           format: email
- *           example: nick@touchtribe.nl
+ *           example: nick@email.com
  *     User:
  *       type: object
  *       required:

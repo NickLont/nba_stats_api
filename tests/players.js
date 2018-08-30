@@ -25,7 +25,7 @@ test.beforeEach(async () => {
   const user = new User({
     username: 'Nick',
     password: hashedPassword,
-    email: 'nick@touchtribe.nl'
+    email: 'nick@email.com'
   })
   await user.save()
 })
