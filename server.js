@@ -15,7 +15,7 @@ mongoose.connection.on('error', (err) => {
 // Express settings
 const app = require('./app')
 // Bind app to port
-app.set('port', process.env.PORT || 3001)
+app.set('port', 3010)
 
 // Start app
 const server = app.listen(app.get('port'), () => {
