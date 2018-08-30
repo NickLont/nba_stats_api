@@ -4,7 +4,7 @@
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/NickLont/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/NickLont/nba_stats_api/issues/new)
-[![js-standard-style](https://raw.githubusercontent.com/feross/standard/master/badge.png)](https://github.com/feross/standard)
+[![js-standard-style](https://img.shields.io/badge/standard-javascript-yellow.svg?style=flat-square)](https://github.com/feross/standard)
 [![GitHub stars](https://img.shields.io/github/stars/NickLont/nba_stats_api.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/NickLont/nba_stats_api/stargazers/)
 
 
