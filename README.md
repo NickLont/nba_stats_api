@@ -1,5 +1,5 @@
 ## **NBA Stats Api**
-> An API with statistics about current and retired NBA players and teamsr
+> An API with statistics about current and retired NBA players and teams
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/NickLont/)
