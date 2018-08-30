@@ -1,10 +1,9 @@
 ## **NBA Stats Api**
 > An API with statistics about current and retired NBA players and teamsr
 
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/NickLont/)
-[![GitHub stars](https://img.shields.io/github/stars/NickLont/nba_stats_api.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Naereen/StrapDown.js/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/NickLont/nba_stats_api.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/NickLont/nba_stats_api/stargazers/)
 
 
 ### Introduction
