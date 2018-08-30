@@ -57,7 +57,7 @@ The lock icon should now appear locked and the user should have access to all of
  ![Example](http://recordit.co/2nqMzIUitH.gif)
 <br />
 <br />
-To use the endpoints programmatically, the token returned from the `/user/signin` endpoint should be placed the Authorization header, with a value of either Bearer + Token (`Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAdG91Y2h0cmliZS5ubCIsIl9pZCI6IjViMzI1ODZkY2Y1MjNiZmI5NzZkNjk4NiIsImlhdCI6MTUzNTYyOTcxNywiZXhwIjoxNTM1NjM2OTE3fQ.anuW3jv8i84SuHVm-2T5ITgini_e_LntAWF9Bp5zU2s`)
+To use the endpoints programmatically, the token returned from the `/user/signin` endpoint should be placed in the Authorization header, with a value of either Bearer + Token (`Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAdG91Y2h0cmliZS5ubCIsIl9pZCI6IjViMzI1ODZkY2Y1MjNiZmI5NzZkNjk4NiIsImlhdCI6MTUzNTYyOTcxNywiZXhwIjoxNTM1NjM2OTE3fQ.anuW3jv8i84SuHVm-2T5ITgini_e_LntAWF9Bp5zU2s`)
  OR just the token (`Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAdG91Y2h0cmliZS5ubCIsIl9pZCI6IjViMzI1ODZkY2Y1MjNiZmI5NzZkNjk4NiIsImlhdCI6MTUzNTYyOTcxNywiZXhwIjoxNTM1NjM2OTE3fQ.anuW3jv8i84SuHVm-2T5ITgini_e_LntAWF9Bp5zU2s`)
 
 ### Technologies used / features
