@@ -35,7 +35,7 @@ Run test coverage using `yarn cover` or `npm run cover`
 ### Usage
 
 Opening the browser to `localhost:3011/swagger/` will give access
-to the swagger interface.
+to the swagger interface (through nginx).
 The endpoints are separated in three categories: `Users`, `Players` and `Teams`.
 Every endpoint has an example that can be run by pressing the `Try it out` button and then the `Execute` button.
 The result will appear right below, with details about the call.<br />
