@@ -82,6 +82,6 @@ This project is licensed under the MIT License
 
 1. Fork it (<https://github.com/NickLont/nba_stats_api/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
+3. Commit your changes (`git commit -m 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
