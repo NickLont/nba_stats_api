@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'testing') {
 // if not make a new call and store the key/value pair
 // The key we create for each call is its name + the query params used in the call
 // If environment is testing, don 't use redis and just return the async response
-const response = async (req, res, name, url) => {
+const getResponse = async (req, res, name, url) => {
   if (process.env.NODE_ENV !== 'testing') {
     return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
       if (err) {
@@ -41,7 +41,7 @@ const response = async (req, res, name, url) => {
     return res.json({source: 'nba.stats remote api', data})
   }
 }
-const responseForImages = async (req, res, name, url) => {
+const getResponseForImages = async (req, res, name, url) => {
   if (process.env.NODE_ENV !== 'testing') {
     return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
       if (err) {
@@ -74,4 +74,4 @@ const responseForImages = async (req, res, name, url) => {
   }
 }
 
-module.exports = {client, response, responseForImages}
+module.exports = {client, getResponse, getResponseForImages}
