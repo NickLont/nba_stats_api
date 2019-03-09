@@ -37,10 +37,9 @@
     <script src="./swagger-ui-standalone-preset.js"> </script>
     <script>
     window.onload = () => {
-
       // Build a system
       const ui = SwaggerUIBundle({
-        url: `http://localhost:3010/swagger.json`,
+        url: `http://${window.location.host}/swagger.json`,
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
