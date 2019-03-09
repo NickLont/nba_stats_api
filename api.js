@@ -2,7 +2,7 @@ const redis = require('redis')
 const axios = require('axios')
 
 // Set diferent environment depending if deployment takes place in docker or locally
-const host = process.env.DOCKER_ENV === 'true' ? 'redis' : 'localhost'
+const host = process.env.DOCKER_ENV === 'true' ? 'redis' : `${process.env.HOST}`
 let client = {}
 
 // Not setting up redis client (so not using caching) when testing

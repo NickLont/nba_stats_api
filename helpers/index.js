@@ -14,7 +14,6 @@ const verifyToken = (req, res, next) => {
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    console.log('err, decoded: ', err, decoded)
     if (err) {
       return res.status(401).json({
         failed: 'Failed to authenticate token'
