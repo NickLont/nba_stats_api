@@ -8,7 +8,7 @@ const swagger = (app) => {
       version: '1.0.0',
       description: 'NBA Stats Api'
     },
-    host: `localhost:3010`,
+    host: `localhost:3011`,
     basePath: '/',
     schemes: ['http', 'https'],
     securityDefinitions: {
