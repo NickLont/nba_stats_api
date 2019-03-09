@@ -39,7 +39,7 @@
     window.onload = () => {
       // Build a system
       const ui = SwaggerUIBundle({
-        url: `${window.location.host}/swagger.json`,
+        url: `http://${window.location.host}/swagger.json`,
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [

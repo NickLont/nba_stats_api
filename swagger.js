@@ -13,7 +13,6 @@ const swagger = (app) => {
     },
     host: `${host}:${nginxPort}`,
     basePath: '/',
-    schemes: ['http', 'https'],
     securityDefinitions: {
       JWT: {
         type: 'apiKey',
