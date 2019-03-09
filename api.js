@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'testing') {
 // If environment is testing, don 't use redis and just return the async response
 const getResponse = async (req, res, name, url) => {
   try {
-    if (process.env.NODE_ENV !== 'testing') {
+    if (false) {
       return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
         if (err) {
           throw new Error(err)
@@ -38,6 +38,7 @@ const getResponse = async (req, res, name, url) => {
       })
     } else {
       const response = await axios.get(url)
+      console.log('response: ', response)
       const data = response.data
       return res.json({source: 'nba.stats remote api', data})
     }
