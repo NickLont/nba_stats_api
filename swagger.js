@@ -1,5 +1,8 @@
 const swaggerJSDoc = require('swagger-jsdoc')
 
+const host = process.env.HOST
+const nginxPort = process.env.NGINX_PORT || '3011'
+
 const swagger = (app) => {
   // Swagger Definition
   const swaggerDefinition = {
@@ -8,7 +11,7 @@ const swagger = (app) => {
       version: '1.0.0',
       description: 'NBA Stats Api'
     },
-    host: `localhost:3011`,
+    host: `${host}:${nginxPort}`,
     basePath: '/',
     schemes: ['http', 'https'],
     securityDefinitions: {
