@@ -38,20 +38,20 @@
     "joi": "^14.3.0",
     "jsonwebtoken": "^8.3.0",
     "mongodb-memory-server": "^3.1.3",
-    "mongoose": "5.3.15",
+    "mongoose": "5.4.18",
     "nodemon": "^1.18.3",
     "redis": "^2.8.0",
     "response-time": "^2.3.2",
     "swagger-jsdoc": "^3.0.2"
   },
   "devDependencies": {
-    "ava": "1.0.0-beta.7",
+    "ava": "1.3.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
     "nyc": "^13.0.1",
-    "supertest": "^3.1.0"
+    "supertest": "^4.0.0"
   }
 }
