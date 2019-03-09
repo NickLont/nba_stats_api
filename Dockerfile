@@ -12,7 +12,8 @@ WORKDIR /nbaStatsApi
 
 ## Copy and install packages
 COPY package.json .
-RUN npm i
+COPY yarn.lock .
+RUN yarn install --silent
 COPY . .
 
 ## Set environment to 'development'
