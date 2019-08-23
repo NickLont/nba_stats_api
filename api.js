@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'testing') {
 // If environment is testing, don 't use redis and just return the async response
 const getResponse = async (req, res, name, url) => {
   try {
-    if (false) {
+    if (process.env.NODE_ENV !== 'testing') {
       return client.get(`${name}${JSON.stringify(req.query)}`, async (err, result) => {
         if (err) {
           throw new Error(err)
@@ -32,15 +32,14 @@ const getResponse = async (req, res, name, url) => {
         } else {
           const response = await axios.get(url)
           const data = response.data
-          client.setex(`${name}${JSON.stringify(req.query)}`, 3600, JSON.stringify({source: 'redis cache', data}))
-          return res.json({source: 'nba.stats remote api', data})
+          client.setex(`${name}${JSON.stringify(req.query)}`, 3600, JSON.stringify({ source: 'redis cache', data }))
+          return res.json({ source: 'nba.stats remote api', data })
         }
       })
     } else {
       const response = await axios.get(url)
-      console.log('response: ', response)
       const data = response.data
-      return res.json({source: 'nba.stats remote api', data})
+      return res.json({ source: 'nba.stats remote api', data })
     }
   } catch (e) {
     throw new Error(e)
@@ -83,4 +82,4 @@ const getResponseForImages = async (req, res, name, url) => {
   }
 }
 
-module.exports = {client, getResponse, getResponseForImages}
+module.exports = { client, getResponse, getResponseForImages }
